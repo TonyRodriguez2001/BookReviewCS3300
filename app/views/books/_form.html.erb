@@ -11,27 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="card">
+  <div class="card-body">
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :title, { class: "form-label"} %>
+      <%= form.text_field :title, { class: "form-control", placeholder: "Book Title" } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.text_field :rating %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :description, { class: "form-label"} %>
+      <%= form.text_area :description, { class: "form-control", placeholder: "Book Description" } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :published %>
-    <%= form.date_select :published %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :rating, { class: "form-label"} %>
+      <%= form.text_field :rating, { class: "form-control", placeholder: "Rating (0 - 10)" } %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="mb-3">
+      <%= form.label :published, { class: "form-label"} %><br>
+      <%= form.date_select :published, { class: "form-control"} %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :image, { class: "form-label"} %><br>
+      <%= form.file_field :image, { class: "form-control-file" } %>
+    </div>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+
   </div>
+</div>
 <% end %>

@@ -1,6 +1,14 @@
-<h1>Editing Book</h1>
+<header>
+  <div class="navbar navbar-dark bg-dark ">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <strong>Editing: <%= @book.title %></strong>
+      </a>
+    </div>
+  </div>
+</header>
 
 <%= render 'form', book: @book %>
 
-<%= link_to 'Show', @book %> |
-<%= link_to 'Back', books_path %>
+<button class="btn btn-sm btn-outline-secondary"><%= link_to 'Show Book', @book %></button>
+<button class="btn btn-sm btn-outline-secondary"><%= link_to 'Back', books_path %></button>
