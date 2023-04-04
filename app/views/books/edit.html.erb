@@ -10,5 +10,8 @@
 
 <%= render 'form', book: @book %>
 
-<button class="btn btn-sm btn-outline-secondary"><%= link_to 'Show Book', @book %></button>
-<button class="btn btn-sm btn-outline-secondary"><%= link_to 'Back', books_path %></button>
+<div class="btn-group">
+<p>
+<%= button_to 'Show Book', @book, method: :get, class: "btn btn-sm btn-outline-secondary" %>
+<%= button_to 'Back', books_path, method: :get, class: "btn btn-sm btn-outline-secondary" %>
+</p>
