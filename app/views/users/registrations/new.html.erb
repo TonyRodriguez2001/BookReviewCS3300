@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: black;
+      color: gold;
+    }
+
+    .field label {
+      color: gold;
+    }
+
+    .actions input[type="submit"] {
+      background-color: gold;
+      border-color: gold;
+      color: black;
+    }
+
+    .actions input[type="submit"]:hover {
+      background-color: black;
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <h2 class="text-center mb-4">Sign up</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "needs-validation" }, novalidate: true) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", required: true %>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          <div class="mb-3">
+            <%= f.label :password, class: "form-label" %>
+            <% if @minimum_password_length %>
+              <small class="text-muted">(<%= @minimum_password_length %> characters minimum)</small>
+            <% end %>
+            <%= f.password_field :password, class: "form-control", autocomplete: "new-password", required: true %>
+            <div class="invalid-feedback">Please enter a password.</div>
+          </div>
+          <div class="mb-3">
+            <%= f.label :password_confirmation, class: "form-label" %>
+            <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", required: true %>
+            <div class="invalid-feedback">Please confirm your password.</div>
+          </div>
+          <div class="mb-3">
+            <%= f.submit "Sign up", class: "btn btn-primary w-100" %>
+          </div>
+        <% end %>
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

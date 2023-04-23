@@ -35,6 +35,11 @@
     </div>
 
     <div class="mb-3">
+    <%= form.label :genre, { class: "form-label"} %>
+    <%= form.select :genre, Book.genres.keys.map { |g| [g.capitalize, g] } %>
+    </div>
+
+    <div class="mb-3">
       <%= form.label :image, { class: "form-label"} %><br>
       <%= form.file_field :image, { class: "form-control-file" } %>
     </div>

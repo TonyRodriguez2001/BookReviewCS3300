@@ -1,2 +1,26 @@
 @import "~bootstrap/scss/bootstrap";
 
+/* Set background image */
+
+.text-gold {
+    color: gold;
+  }
+  body {
+    background-color: black;
+    color: gold;
+  }
+
+  .field label {
+    color: gold;
+  }
+
+  .actions input[type="submit"] {
+    background-color: gold;
+    border-color: gold;
+    color: black;
+  }
+
+  .actions input[type="submit"]:hover {
+    background-color: black;
+    color: gold;
+  }
