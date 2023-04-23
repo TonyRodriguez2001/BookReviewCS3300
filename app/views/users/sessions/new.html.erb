@@ -1,0 +1,36 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card border-0 shadow-lg">
+        <div class="card-header bg-black text-gold">
+          <h2 class="card-title mb-0">Log in</h2>
+        </div>
+        <div class="card-body bg-black">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+            <div class="mb-3">
+              <%= f.label :email, class: "form-label text-gold" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control bg-transparent border-bottom text-white" %>
+            </div>
+            <div class="mb-3">
+              <%= f.label :password, class: "form-label text-gold" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control bg-transparent border-bottom text-white" %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="mb-3">
+                <div class="form-check">
+                  <%= f.check_box :remember_me, class: "form-check-input" %>
+                  <%= f.label :remember_me, class: "form-check-label text-gold" %>
+                </div>
+              </div>
+            <% end %>
+            <div class="d-grid">
+              <%= f.submit "Log in", class: "btn btn-primary w-100" %>
+            </div>
+          <% end %>
+          <%= render "users/shared/links", class: "text-gold" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

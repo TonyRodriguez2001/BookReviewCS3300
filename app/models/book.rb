@@ -5,4 +5,5 @@ class Book < ApplicationRecord
     validates :image, presence: true
     #validates :date, presence: true
     has_one_attached :image
+    enum genre: [:fiction, :nonfiction, :mystery, :romance, :sci_fi, :fantasy, :horror, :history, :biography, :memoir]
 end
