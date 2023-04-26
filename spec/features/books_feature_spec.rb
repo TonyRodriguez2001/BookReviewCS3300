@@ -5,8 +5,9 @@ RSpec.feature "Books", type: :feature do
     let(:book) { Book.create(title: "Title", description: "Content of the description", rating: 10, image: "test.jpg", published: Date.today, genre: 2) }
     
     before(:each) do
-      visit edit_Book
-      _path(book)
+      user = FactoryBot.create(:user)
+      login_as(user)
+      visit edit_book_path(book)
     end
     
     scenario "should be successful" do
@@ -15,7 +16,7 @@ RSpec.feature "Books", type: :feature do
         fill_in "Title", with: "New title"
         fill_in "Published", with: "2022-05-01"
         fill_in "Rating", with: "4.50"
-        attach_file("Image", Rails.root + "spec/fixtures/test_image.png")
+        attach_file("Image", Rails.root + "test_image.png")
         select "Romance", from: "Genre"
       end
       click_button "Update Book"
@@ -72,6 +73,8 @@ RSpec.feature "Books", type: :feature do
   
   context "Create book" do
     before(:each) do
+      user = FactoryBot.create(:user)
+      login_as(user)
       visit new_book_path
     end
     
@@ -135,6 +138,29 @@ RSpec.feature "Books", type: :feature do
         end
         click_button "Update Book"
         expect(page).to have_content("Genre can't be blank")
+    end
+  end
+end
+
+RSpec.feature "Books", type: :feature do
+  context "Login" do
+    scenario "should sign up" do
+      visit root_path
+      click_link 'Sign up'
+      within("form") do
+        fill_in "Email", with: "testing@test.com"
+        fill_in "Password", with: "123456"
+        fill_in "Password confirmation", with: "123456"
+        click_button "Sign up"
+      end
+      expect(page).to have_content("Welcome! You have signed up successfully.")
+    end
+    
+    scenario "should log in" do
+      user = FactoryBot.create(:user)
+      login_as(user)
+      visit root_path
+      expect(page).to have_content("Logged in")
     end
   end
 end
