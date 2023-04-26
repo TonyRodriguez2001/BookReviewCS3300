@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe BooksController, type: :controller do
+
+  login_user
+
   describe "test web requests" do
     context "GET #index" do
       it "returns a success response" do
@@ -11,7 +14,6 @@ RSpec.describe BooksController, type: :controller do
 
     context "GET #edit" do
       let!(:book) { Book.create(title: "Title", description: "Content of the description", rating: 10, image: "test.jpg", published: Date.today, genre: 2) }
-
       it "returns a success response" do
         expect(response).to have_http_status(:ok)
       end
@@ -25,7 +27,7 @@ RSpec.describe BooksController, type: :controller do
     end
 
     context "GET #show" do
-      let!(:book) { Project.create(title: "Title", description: "Content of the description", rating: 10, image: "test.jpg", published: Date.today, genre: 2) }
+      let!(:book) { Book.create(title: "Title", description: "Content of the description", rating: 10, image: "test.jpg", published: Date.today, genre: 2) }
 
       it "returns a success response" do
         expect(response).to have_http_status(:ok)
